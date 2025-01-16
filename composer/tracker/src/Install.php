@@ -20,6 +20,7 @@ class Install
     public static function install(): void
     {
         static::installByRelation();
+        copy_dir(__DIR__ . "/support/Request.stub", base_path() . "/support/Request.php", true);
     }
 
     /**
