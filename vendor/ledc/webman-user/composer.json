@@ -1,0 +1,26 @@
+{
+    "name": "ledc/webman-user",
+    "description": "扩展webman框架用户插件的功能",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ledc\\WebmanUser\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "david",
+            "email": "367013672@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.3",
+        "workerman/webman-framework": "^1.5",
+        "webman/event": ">=1.0",
+        "webman/admin": "^0.6.31"
+    }
+}

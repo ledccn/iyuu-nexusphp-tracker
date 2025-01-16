@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title>浏览页面</title>
+    <link rel="stylesheet" href="/app/admin/component/pear/css/pear.css"/>
+    <link rel="stylesheet" href="/app/admin/admin/css/reset.css"/>
+</head>
+<body class="pear-container">
+
+<!-- 顶部查询表单 -->
+
+
+<!-- 数据表格 -->
+<div class="layui-card">
+    <div class="layui-card-body">
+        <table id="data-table" lay-filter="data-table"></table>
+    </div>
+</div>
+
+<!-- 表格顶部工具栏 -->
+<script type="text/html" id="table-toolbar">
+    <button class="pear-btn pear-btn-primary pear-btn-md" lay-event="add" permission="app.tracker.user.insert">
+        <i class="layui-icon layui-icon-add-1"></i>新增
+    </button>
+    <button class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove" permission="app.tracker.user.delete">
+        <i class="layui-icon layui-icon-delete"></i>删除
+    </button>
+</script>
+
+<!-- 表格行工具栏 -->
+<script type="text/html" id="table-bar">
+    <button class="pear-btn pear-btn-xs tool-btn" lay-event="edit" permission="app.tracker.user.update">编辑</button>
+    <button class="pear-btn pear-btn-xs tool-btn" lay-event="remove" permission="app.tracker.user.delete">删除</button>
+</script>
+
+<script src="/app/admin/component/layui/layui.js?v=2.8.12"></script>
+<script src="/app/admin/component/pear/pear.js"></script>
+<script src="/app/admin/admin/js/permission.js"></script>
+<script src="/app/admin/admin/js/common.js"></script>
+
+<script>
+
+    // 相关常量
+    const PRIMARY_KEY = "id";
+    const SELECT_API = "/app/tracker/user/select";
+    const UPDATE_API = "/app/tracker/user/update";
+    const DELETE_API = "/app/tracker/user/delete";
+    const INSERT_URL = "/app/tracker/user/insert";
+    const UPDATE_URL = "/app/tracker/user/update";
+
+    // 表格渲染
+    layui.use(["table", "form", "common", "popup", "util"], function () {
+        let table = layui.table;
+        let form = layui.form;
+        let $ = layui.$;
+        let common = layui.common;
+        let util = layui.util;
+
+        // 表头参数
+        let cols = [
+            {
+                type: "checkbox",
+                align: "center"
+            }, {
+                title: "id", align: "center",
+                field: "id",
+            }, {
+                title: "username", align: "center",
+                field: "username",
+            }, {
+                title: "passhash", align: "center",
+                field: "passhash",
+            }, {
+                title: "secret", align: "center",
+                field: "secret",
+            }, {
+                title: "email", align: "center",
+                field: "email",
+            }, {
+                title: "status", align: "center",
+                field: "status",
+                templet: function (d) {
+                    let field = "status";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "added", align: "center",
+                field: "added",
+            }, {
+                title: "last_login", align: "center",
+                field: "last_login",
+            }, {
+                title: "last_access", align: "center",
+                field: "last_access",
+            }, {
+                title: "last_home", align: "center",
+                field: "last_home",
+            }, {
+                title: "last_offer", align: "center",
+                field: "last_offer",
+            }, {
+                title: "forum_access", align: "center",
+                field: "forum_access",
+            }, {
+                title: "last_staffmsg", align: "center",
+                field: "last_staffmsg",
+            }, {
+                title: "last_pm", align: "center",
+                field: "last_pm",
+            }, {
+                title: "last_comment", align: "center",
+                field: "last_comment",
+            }, {
+                title: "last_post", align: "center",
+                field: "last_post",
+            }, {
+                title: "last_browse", align: "center",
+                field: "last_browse",
+            }, {
+                title: "last_music", align: "center",
+                field: "last_music",
+            }, {
+                title: "last_catchup", align: "center",
+                field: "last_catchup",
+            }, {
+                title: "editsecret", align: "center",
+                field: "editsecret",
+            }, {
+                title: "privacy", align: "center",
+                field: "privacy",
+                templet: function (d) {
+                    let field = "privacy";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "stylesheet", align: "center",
+                field: "stylesheet",
+            }, {
+                title: "caticon", align: "center",
+                field: "caticon",
+            }, {
+                title: "fontsize", align: "center",
+                field: "fontsize",
+                templet: function (d) {
+                    let field = "fontsize";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "info", align: "center",
+                field: "info",
+            }, {
+                title: "acceptpms", align: "center",
+                field: "acceptpms",
+                templet: function (d) {
+                    let field = "acceptpms";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "commentpm", align: "center",
+                field: "commentpm",
+                templet: function (d) {
+                    let field = "commentpm";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "ip", align: "center",
+                field: "ip",
+            }, {
+                title: "class", align: "center",
+                field: "class",
+            }, {
+                title: "max_class_once", align: "center",
+                field: "max_class_once",
+            }, {
+                title: "avatar", align: "center",
+                field: "avatar",
+            }, {
+                title: "uploaded", align: "center",
+                field: "uploaded",
+            }, {
+                title: "downloaded", align: "center",
+                field: "downloaded",
+            }, {
+                title: "seedtime", align: "center",
+                field: "seedtime",
+            }, {
+                title: "leechtime", align: "center",
+                field: "leechtime",
+            }, {
+                title: "title", align: "center",
+                field: "title",
+            }, {
+                title: "country", align: "center",
+                field: "country",
+            }, {
+                title: "notifs", align: "center",
+                field: "notifs",
+            }, {
+                title: "modcomment", align: "center",
+                field: "modcomment",
+            }, {
+                title: "enabled", align: "center",
+                field: "enabled",
+                templet: function (d) {
+                    let field = "enabled";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "avatars", align: "center",
+                field: "avatars",
+                templet: function (d) {
+                    let field = "avatars";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "donor", align: "center",
+                field: "donor",
+                templet: function (d) {
+                    let field = "donor";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "donated", align: "center",
+                field: "donated",
+            }, {
+                title: "donated_cny", align: "center",
+                field: "donated_cny",
+            }, {
+                title: "donoruntil", align: "center",
+                field: "donoruntil",
+            }, {
+                title: "warned", align: "center",
+                field: "warned",
+                templet: function (d) {
+                    let field = "warned";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "warneduntil", align: "center",
+                field: "warneduntil",
+            }, {
+                title: "noad", align: "center",
+                field: "noad",
+                templet: function (d) {
+                    let field = "noad";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "noaduntil", align: "center",
+                field: "noaduntil",
+            }, {
+                title: "torrentsperpage", align: "center",
+                field: "torrentsperpage",
+            }, {
+                title: "topicsperpage", align: "center",
+                field: "topicsperpage",
+            }, {
+                title: "postsperpage", align: "center",
+                field: "postsperpage",
+            }, {
+                title: "clicktopic", align: "center",
+                field: "clicktopic",
+                templet: function (d) {
+                    let field = "clicktopic";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "deletepms", align: "center",
+                field: "deletepms",
+                templet: function (d) {
+                    let field = "deletepms";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "savepms", align: "center",
+                field: "savepms",
+                templet: function (d) {
+                    let field = "savepms";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "showhot", align: "center",
+                field: "showhot",
+                templet: function (d) {
+                    let field = "showhot";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "showclassic", align: "center",
+                field: "showclassic",
+                templet: function (d) {
+                    let field = "showclassic";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "support", align: "center",
+                field: "support",
+                templet: function (d) {
+                    let field = "support";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "picker", align: "center",
+                field: "picker",
+                templet: function (d) {
+                    let field = "picker";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "stafffor", align: "center",
+                field: "stafffor",
+            }, {
+                title: "supportfor", align: "center",
+                field: "supportfor",
+            }, {
+                title: "pickfor", align: "center",
+                field: "pickfor",
+            }, {
+                title: "supportlang", align: "center",
+                field: "supportlang",
+            }, {
+                title: "passkey", align: "center",
+                field: "passkey",
+            }, {
+                title: "promotion_link", align: "center",
+                field: "promotion_link",
+            }, {
+                title: "uploadpos", align: "center",
+                field: "uploadpos",
+                templet: function (d) {
+                    let field = "uploadpos";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "forumpost", align: "center",
+                field: "forumpost",
+                templet: function (d) {
+                    let field = "forumpost";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "downloadpos", align: "center",
+                field: "downloadpos",
+                templet: function (d) {
+                    let field = "downloadpos";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "clientselect", align: "center",
+                field: "clientselect",
+            }, {
+                title: "signatures", align: "center",
+                field: "signatures",
+                templet: function (d) {
+                    let field = "signatures";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "signature", align: "center",
+                field: "signature",
+            }, {
+                title: "lang", align: "center",
+                field: "lang",
+            }, {
+                title: "cheat", align: "center",
+                field: "cheat",
+            }, {
+                title: "download", align: "center",
+                field: "download",
+            }, {
+                title: "upload", align: "center",
+                field: "upload",
+            }, {
+                title: "isp", align: "center",
+                field: "isp",
+            }, {
+                title: "invites", align: "center",
+                field: "invites",
+            }, {
+                title: "invited_by", align: "center",
+                field: "invited_by",
+            }, {
+                title: "gender", align: "center",
+                field: "gender",
+                templet: function (d) {
+                    let field = "gender";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "vip_added", align: "center",
+                field: "vip_added",
+                templet: function (d) {
+                    let field = "vip_added";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "vip_until", align: "center",
+                field: "vip_until",
+            }, {
+                title: "seedbonus", align: "center",
+                field: "seedbonus",
+            }, {
+                title: "charity", align: "center",
+                field: "charity",
+            }, {
+                title: "bonuscomment", align: "center",
+                field: "bonuscomment",
+            }, {
+                title: "parked", align: "center",
+                field: "parked",
+                templet: function (d) {
+                    let field = "parked";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "leechwarn", align: "center",
+                field: "leechwarn",
+                templet: function (d) {
+                    let field = "leechwarn";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "leechwarnuntil", align: "center",
+                field: "leechwarnuntil",
+            }, {
+                title: "lastwarned", align: "center",
+                field: "lastwarned",
+            }, {
+                title: "timeswarned", align: "center",
+                field: "timeswarned",
+            }, {
+                title: "warnedby", align: "center",
+                field: "warnedby",
+            }, {
+                title: "sbnum", align: "center",
+                field: "sbnum",
+            }, {
+                title: "sbrefresh", align: "center",
+                field: "sbrefresh",
+            }, {
+                title: "hidehb", align: "center",
+                field: "hidehb",
+                templet: function (d) {
+                    let field = "hidehb";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "showimdb", align: "center",
+                field: "showimdb",
+                templet: function (d) {
+                    let field = "showimdb";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "showdescription", align: "center",
+                field: "showdescription",
+                templet: function (d) {
+                    let field = "showdescription";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "showcomment", align: "center",
+                field: "showcomment",
+                templet: function (d) {
+                    let field = "showcomment";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "showclienterror", align: "center",
+                field: "showclienterror",
+                templet: function (d) {
+                    let field = "showclienterror";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "showdlnotice", align: "center",
+                field: "showdlnotice",
+            }, {
+                title: "tooltip", align: "center",
+                field: "tooltip",
+                templet: function (d) {
+                    let field = "tooltip";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "shownfo", align: "center",
+                field: "shownfo",
+                templet: function (d) {
+                    let field = "shownfo";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "timetype", align: "center",
+                field: "timetype",
+                templet: function (d) {
+                    let field = "timetype";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "appendsticky", align: "center",
+                field: "appendsticky",
+                templet: function (d) {
+                    let field = "appendsticky";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "appendnew", align: "center",
+                field: "appendnew",
+                templet: function (d) {
+                    let field = "appendnew";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "appendpromotion", align: "center",
+                field: "appendpromotion",
+                templet: function (d) {
+                    let field = "appendpromotion";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "appendpicked", align: "center",
+                field: "appendpicked",
+                templet: function (d) {
+                    let field = "appendpicked";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "dlicon", align: "center",
+                field: "dlicon",
+                templet: function (d) {
+                    let field = "dlicon";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "bmicon", align: "center",
+                field: "bmicon",
+                templet: function (d) {
+                    let field = "bmicon";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "showsmalldescr", align: "center",
+                field: "showsmalldescr",
+                templet: function (d) {
+                    let field = "showsmalldescr";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "showcomnum", align: "center",
+                field: "showcomnum",
+                templet: function (d) {
+                    let field = "showcomnum";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "showlastcom", align: "center",
+                field: "showlastcom",
+                templet: function (d) {
+                    let field = "showlastcom";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "showlastpost", align: "center",
+                field: "showlastpost",
+                templet: function (d) {
+                    let field = "showlastpost";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "pmnum", align: "center",
+                field: "pmnum",
+            }, {
+                title: "school", align: "center",
+                field: "school",
+            }, {
+                title: "showfb", align: "center",
+                field: "showfb",
+                templet: function (d) {
+                    let field = "showfb";
+                    if (typeof d[field] == "undefined") return "";
+                    let items = [];
+                    layui.each((d[field] + "").split(","), function (k, v) {
+                        items.push(apiResults[field][v] || v);
+                    });
+                    return util.escape(items.join(","));
+                }
+            }, {
+                title: "page", align: "center",
+                field: "page",
+            }, {
+                title: "two_step_secret", align: "center",
+                field: "two_step_secret",
+            }, {
+                title: "seed_points", align: "center",
+                field: "seed_points",
+            }, {
+                title: "seed_points_per_hour", align: "center",
+                field: "seed_points_per_hour",
+            }, {
+                title: "attendance_card", align: "center",
+                field: "attendance_card",
+            }, {
+                title: "offer_allowed_count", align: "center",
+                field: "offer_allowed_count",
+            }, {
+                title: "seed_points_updated_at", align: "center",
+                field: "seed_points_updated_at",
+            }, {
+                title: "seed_time_updated_at", align: "center",
+                field: "seed_time_updated_at",
+            }, {
+                title: "current_tracker", align: "center",
+                field: "current_tracker",
+            }, {
+                title: "操作",
+                toolbar: "#table-bar",
+                align: "center",
+                fixed: "right",
+                width: 120,
+            }
+        ];
+
+        // 渲染表格
+        table.render({
+            elem: "#data-table",
+            url: SELECT_API,
+            page: true,
+            cols: [cols],
+            skin: "line",
+            size: "lg",
+            toolbar: "#table-toolbar",
+            autoSort: false,
+            defaultToolbar: [{
+                title: "刷新",
+                layEvent: "refresh",
+                icon: "layui-icon-refresh",
+            }, "filter", "print", "exports"],
+            done: function () {
+                layer.photos({photos: 'div[lay-id="data-table"]', anim: 5});
+            }
+        });
+
+        // 获取表格中下拉或树形组件数据
+        let apiResults = {};
+        apiResults["status"] = [];
+        apiResults["privacy"] = [];
+        apiResults["fontsize"] = [];
+        apiResults["acceptpms"] = [];
+        apiResults["commentpm"] = [];
+        apiResults["enabled"] = [];
+        apiResults["avatars"] = [];
+        apiResults["donor"] = [];
+        apiResults["warned"] = [];
+        apiResults["noad"] = [];
+        apiResults["clicktopic"] = [];
+        apiResults["deletepms"] = [];
+        apiResults["savepms"] = [];
+        apiResults["showhot"] = [];
+        apiResults["showclassic"] = [];
+        apiResults["support"] = [];
+        apiResults["picker"] = [];
+        apiResults["uploadpos"] = [];
+        apiResults["forumpost"] = [];
+        apiResults["downloadpos"] = [];
+        apiResults["signatures"] = [];
+        apiResults["gender"] = [];
+        apiResults["vip_added"] = [];
+        apiResults["parked"] = [];
+        apiResults["leechwarn"] = [];
+        apiResults["hidehb"] = [];
+        apiResults["showimdb"] = [];
+        apiResults["showdescription"] = [];
+        apiResults["showcomment"] = [];
+        apiResults["showclienterror"] = [];
+        apiResults["tooltip"] = [];
+        apiResults["shownfo"] = [];
+        apiResults["timetype"] = [];
+        apiResults["appendsticky"] = [];
+        apiResults["appendnew"] = [];
+        apiResults["appendpromotion"] = [];
+        apiResults["appendpicked"] = [];
+        apiResults["dlicon"] = [];
+        apiResults["bmicon"] = [];
+        apiResults["showsmalldescr"] = [];
+        apiResults["showcomnum"] = [];
+        apiResults["showlastcom"] = [];
+        apiResults["showlastpost"] = [];
+        apiResults["showfb"] = [];
+        // 编辑或删除行事件
+        table.on("tool(data-table)", function (obj) {
+            if (obj.event === "remove") {
+                remove(obj);
+            } else if (obj.event === "edit") {
+                edit(obj);
+            }
+        });
+
+        // 表格顶部工具栏事件
+        table.on("toolbar(data-table)", function (obj) {
+            if (obj.event === "add") {
+                add();
+            } else if (obj.event === "refresh") {
+                refreshTable();
+            } else if (obj.event === "batchRemove") {
+                batchRemove(obj);
+            }
+        });
+
+        // 表格顶部搜索事件
+        form.on("submit(table-query)", function (data) {
+            table.reload("data-table", {
+                page: {
+                    curr: 1
+                },
+                where: data.field
+            })
+            return false;
+        });
+
+        // 表格顶部搜索重置事件
+        form.on("submit(table-reset)", function (data) {
+            table.reload("data-table", {
+                where: []
+            })
+        });
+
+        // 字段允许为空
+        form.verify({
+            phone: [/(^$)|^1\d{10}$/, "请输入正确的手机号"],
+            email: [/(^$)|^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/, "邮箱格式不正确"],
+            url: [/(^$)|(^#)|(^http(s*):\/\/[^\s]+\.[^\s]+)/, "链接格式不正确"],
+            number: [/(^$)|^\d+$/, '只能填写数字'],
+            date: [/(^$)|^(\d{4})[-\/](\d{1}|0\d{1}|1[0-2])([-\/](\d{1}|0\d{1}|[1-2][0-9]|3[0-1]))*$/, "日期格式不正确"],
+            identity: [/(^$)|(^\d{15}$)|(^\d{17}(x|X|\d)$)/, "请输入正确的身份证号"]
+        });
+
+        // 表格排序事件
+        table.on("sort(data-table)", function (obj) {
+            table.reload("data-table", {
+                initSort: obj,
+                scrollPos: "fixed",
+                where: {
+                    field: obj.field,
+                    order: obj.type
+                }
+            });
+        });
+
+        // 表格新增数据
+        let add = function () {
+            layer.open({
+                type: 2,
+                title: "新增",
+                shade: 0.1,
+                maxmin: true,
+                area: [common.isModile() ? "100%" : "500px", common.isModile() ? "100%" : "450px"],
+                content: INSERT_URL
+            });
+        }
+
+        // 表格编辑数据
+        let edit = function (obj) {
+            let value = obj.data[PRIMARY_KEY];
+            layer.open({
+                type: 2,
+                title: "修改",
+                shade: 0.1,
+                maxmin: true,
+                area: [common.isModile() ? "100%" : "500px", common.isModile() ? "100%" : "450px"],
+                content: UPDATE_URL + "?" + PRIMARY_KEY + "=" + value
+            });
+        }
+
+        // 删除一行
+        let remove = function (obj) {
+            return doRemove(obj.data[PRIMARY_KEY]);
+        }
+
+        // 删除多行
+        let batchRemove = function (obj) {
+            let checkIds = common.checkField(obj, PRIMARY_KEY);
+            if (checkIds === "") {
+                layui.popup.warning("未选中数据");
+                return false;
+            }
+            doRemove(checkIds.split(","));
+        }
+
+        // 执行删除
+        let doRemove = function (ids) {
+            let data = {};
+            data[PRIMARY_KEY] = ids;
+            layer.confirm("确定删除?", {
+                icon: 3,
+                title: "提示"
+            }, function (index) {
+                layer.close(index);
+                let loading = layer.load();
+                $.ajax({
+                    url: DELETE_API,
+                    data: data,
+                    dataType: "json",
+                    type: "post",
+                    success: function (res) {
+                        layer.close(loading);
+                        if (res.code) {
+                            return layui.popup.failure(res.msg);
+                        }
+                        return layui.popup.success("操作成功", refreshTable);
+                    }
+                })
+            });
+        }
+
+        // 刷新表格数据
+        window.refreshTable = function () {
+            table.reloadData("data-table", {
+                scrollPos: "fixed",
+                done: function (res, curr) {
+                    if (curr > 1 && res.data && !res.data.length) {
+                        curr = curr - 1;
+                        table.reloadData("data-table", {
+                            page: {
+                                curr: curr
+                            },
+                        })
+                    }
+                }
+            });
+        }
+    })
+
+</script>
+</body>
+</html>

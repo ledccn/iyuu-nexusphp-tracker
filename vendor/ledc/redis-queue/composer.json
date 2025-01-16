@@ -1,0 +1,38 @@
+{
+  "name": "ledc/redis-queue",
+  "type": "library",
+  "license": "MIT",
+  "description": "Webman plugin ledc/redis-queue",
+  "authors": [
+    {
+      "name": "david",
+      "email": "367013672@qq.com",
+      "homepage": "https://www.iyuu.cn",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "367013672@qq.com",
+    "issues": "https://github.com/ledccn/redis-queue/issues",
+    "releases": "https://github.com/ledccn/redis-queue/releases",
+    "tags": "https://github.com/ledccn/redis-queue/tags",
+    "wiki": "https://github.com/ledccn/redis-queue/wiki",
+    "source": "https://github.com/ledccn/redis-queue"
+  },
+  "require": {
+    "php": ">=8.2",
+    "ext-redis": "*",
+    "ext-json": "*",
+    "workerman/webman-framework": "^1.5.0",
+    "webman/console": "^1.3",
+    "webman/redis-queue": "^1.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Ledc\\RedisQueue\\": "src"
+    },
+    "files": [
+      "src/helpers.php"
+    ]
+  }
+}

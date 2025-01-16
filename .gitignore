@@ -1,0 +1,14 @@
+/.idea
+/.vscode
+*.log
+.env
+/tests/tmp
+/tests/.phpunit.result.cache
+/*.log
+/.env
+.DS_Store
+*.DS_Store
+/._.DS_Store
+/public/.well-known/
+/.php-cs-fixer.cache
+/vendor/workerman/workerman.log

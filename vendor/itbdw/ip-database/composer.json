@@ -1,0 +1,37 @@
+{
+  "name": "itbdw/ip-database",
+  "type": "library",
+  "description": "IP数据库 IPV4 IPV6（解析为国家、省、市、县、运营商）",
+  "keywords": [
+    "ip",
+    "database",
+    "location",
+    "chinese",
+    "china",
+    "数据库",
+    "IP数据库"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "马秉尧"
+    },
+    {
+      "name": "itbdw",
+      "email": "itbudaoweng@gmail.com",
+      "role": "Developer",
+      "homepage": "http://github.com/itbdw"
+    }
+  ],
+  "require": {
+    "php": "*",
+    "ext-mbstring": "*",
+    "ext-json": "*",
+    "ext-iconv": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "itbdw\\Ip\\": "src/"
+    }
+  }
+}

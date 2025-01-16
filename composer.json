@@ -1,0 +1,70 @@
+{
+  "name": "iyuu/tracker",
+  "type": "project",
+  "keywords": [
+    "tracker",
+    "pt"
+  ],
+  "homepage": "https://doc.iyuu.cn",
+  "license": "MIT",
+  "description": "高性能Tracker服务框架.",
+  "authors": [
+    {
+      "name": "david",
+      "email": "367013672@qq.com",
+      "homepage": "https://www.iyuu.cn",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "walkor@workerman.net",
+    "issues": "https://github.com/walkor/webman/issues",
+    "forum": "https://wenda.workerman.net/",
+    "wiki": "https://workerman.net/doc/webman",
+    "source": "https://github.com/walkor/webman"
+  },
+  "require": {
+    "php": ">=8.3",
+    "workerman/webman-framework": "^1.6.8",
+    "workerman/http-client": "^2.2",
+    "revolt/event-loop": "^1.0",
+    "monolog/monolog": "^3.8",
+    "ledc/webman": ">=8.0",
+    "ledc/push": ">=1.1",
+    "rhilip/bencode": "^2.4",
+    "symfony/translation": "^7.2",
+    "phpmailer/phpmailer": "^6.9",
+    "zoujingli/ip2region": "^2.0",
+    "itbdw/ip-database": "^3.0",
+    "ext-posix": "*",
+    "ext-pcntl": "*",
+    "ext-pdo": "*",
+    "ext-bcmath": "*"
+  },
+  "suggest": {
+    "ext-event": "For better performance. "
+  },
+  "autoload": {
+    "psr-4": {
+      "Iyuu\\Tracker\\" : "composer/tracker/src",
+      "": "./",
+      "app\\": "./app"
+    },
+    "files": [
+      "composer/tracker/src/helpers.php"
+    ]
+  },
+  "scripts": {
+    "post-package-install": [
+      "support\\Plugin::install"
+    ],
+    "post-package-update": [
+      "support\\Plugin::install"
+    ],
+    "pre-package-uninstall": [
+      "support\\Plugin::uninstall"
+    ]
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

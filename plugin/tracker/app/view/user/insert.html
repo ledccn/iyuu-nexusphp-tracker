@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>新增页面</title>
+    <link rel="stylesheet" href="/app/admin/component/pear/css/pear.css"/>
+    <link rel="stylesheet" href="/app/admin/component/jsoneditor/css/jsoneditor.css"/>
+    <link rel="stylesheet" href="/app/admin/admin/css/reset.css"/>
+</head>
+<body>
+
+<form class="layui-form" action="">
+
+    <div class="mainBox">
+        <div class="main-container mr-5">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">username</label>
+                <div class="layui-input-block">
+                    <input type="text" name="username" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">passhash</label>
+                <div class="layui-input-block">
+                    <input type="text" name="passhash" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">secret</label>
+                <div class="layui-input-block">
+                    <input type="text" name="secret" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">email</label>
+                <div class="layui-input-block">
+                    <input type="text" name="email" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">status</label>
+                <div class="layui-input-block">
+                    <div name="status" id="status" value="pending"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">added</label>
+                <div class="layui-input-block">
+                    <input type="text" name="added" id="added" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">last_login</label>
+                <div class="layui-input-block">
+                    <input type="text" name="last_login" id="last_login" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">last_access</label>
+                <div class="layui-input-block">
+                    <input type="text" name="last_access" id="last_access" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">last_home</label>
+                <div class="layui-input-block">
+                    <input type="text" name="last_home" id="last_home" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">last_offer</label>
+                <div class="layui-input-block">
+                    <input type="text" name="last_offer" id="last_offer" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">forum_access</label>
+                <div class="layui-input-block">
+                    <input type="text" name="forum_access" id="forum_access" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">last_staffmsg</label>
+                <div class="layui-input-block">
+                    <input type="text" name="last_staffmsg" id="last_staffmsg" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">last_pm</label>
+                <div class="layui-input-block">
+                    <input type="text" name="last_pm" id="last_pm" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">last_comment</label>
+                <div class="layui-input-block">
+                    <input type="text" name="last_comment" id="last_comment" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">last_post</label>
+                <div class="layui-input-block">
+                    <input type="text" name="last_post" id="last_post" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">last_browse</label>
+                <div class="layui-input-block">
+                    <input type="number" name="last_browse" value="0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">last_music</label>
+                <div class="layui-input-block">
+                    <input type="number" name="last_music" value="0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">last_catchup</label>
+                <div class="layui-input-block">
+                    <input type="number" name="last_catchup" value="0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">editsecret</label>
+                <div class="layui-input-block">
+                    <input type="text" name="editsecret" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">privacy</label>
+                <div class="layui-input-block">
+                    <div name="privacy" id="privacy" value="normal"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">stylesheet</label>
+                <div class="layui-input-block">
+                    <input type="number" name="stylesheet" value="1" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">caticon</label>
+                <div class="layui-input-block">
+                    <input type="number" name="caticon" value="1" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">fontsize</label>
+                <div class="layui-input-block">
+                    <div name="fontsize" id="fontsize" value="medium"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">info</label>
+                <div class="layui-input-block">
+                    <textarea name="info" class="layui-textarea"></textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">acceptpms</label>
+                <div class="layui-input-block">
+                    <div name="acceptpms" id="acceptpms" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">commentpm</label>
+                <div class="layui-input-block">
+                    <div name="commentpm" id="commentpm" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">ip</label>
+                <div class="layui-input-block">
+                    <input type="text" name="ip" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">class</label>
+                <div class="layui-input-block">
+                    <input type="number" name="class" value="1" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">max_class_once</label>
+                <div class="layui-input-block">
+                    <input type="number" name="max_class_once" value="1" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">avatar</label>
+                <div class="layui-input-block">
+                    <input type="text" name="avatar" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">uploaded</label>
+                <div class="layui-input-block">
+                    <input type="number" name="uploaded" value="0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">downloaded</label>
+                <div class="layui-input-block">
+                    <input type="number" name="downloaded" value="0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">seedtime</label>
+                <div class="layui-input-block">
+                    <input type="number" name="seedtime" value="0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">leechtime</label>
+                <div class="layui-input-block">
+                    <input type="number" name="leechtime" value="0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">title</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">country</label>
+                <div class="layui-input-block">
+                    <input type="number" name="country" value="107" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">notifs</label>
+                <div class="layui-input-block">
+                    <input type="text" name="notifs" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">modcomment</label>
+                <div class="layui-input-block">
+                    <textarea name="modcomment" class="layui-textarea"></textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">enabled</label>
+                <div class="layui-input-block">
+                    <div name="enabled" id="enabled" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">avatars</label>
+                <div class="layui-input-block">
+                    <div name="avatars" id="avatars" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">donor</label>
+                <div class="layui-input-block">
+                    <div name="donor" id="donor" value="no"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">donated</label>
+                <div class="layui-input-block">
+                    <input type="text" name="donated" value="0.00" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">donated_cny</label>
+                <div class="layui-input-block">
+                    <input type="text" name="donated_cny" value="0.00" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">donoruntil</label>
+                <div class="layui-input-block">
+                    <input type="text" name="donoruntil" id="donoruntil" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">warned</label>
+                <div class="layui-input-block">
+                    <div name="warned" id="warned" value="no"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">warneduntil</label>
+                <div class="layui-input-block">
+                    <input type="text" name="warneduntil" id="warneduntil" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">noad</label>
+                <div class="layui-input-block">
+                    <div name="noad" id="noad" value="no"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">noaduntil</label>
+                <div class="layui-input-block">
+                    <input type="text" name="noaduntil" id="noaduntil" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">torrentsperpage</label>
+                <div class="layui-input-block">
+                    <input type="number" name="torrentsperpage" value="0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">topicsperpage</label>
+                <div class="layui-input-block">
+                    <input type="number" name="topicsperpage" value="0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">postsperpage</label>
+                <div class="layui-input-block">
+                    <input type="number" name="postsperpage" value="0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">clicktopic</label>
+                <div class="layui-input-block">
+                    <div name="clicktopic" id="clicktopic" value="firstpage"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">deletepms</label>
+                <div class="layui-input-block">
+                    <div name="deletepms" id="deletepms" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">savepms</label>
+                <div class="layui-input-block">
+                    <div name="savepms" id="savepms" value="no"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">showhot</label>
+                <div class="layui-input-block">
+                    <div name="showhot" id="showhot" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">showclassic</label>
+                <div class="layui-input-block">
+                    <div name="showclassic" id="showclassic" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">support</label>
+                <div class="layui-input-block">
+                    <div name="support" id="support" value="no"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">picker</label>
+                <div class="layui-input-block">
+                    <div name="picker" id="picker" value="no"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">stafffor</label>
+                <div class="layui-input-block">
+                    <input type="text" name="stafffor" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">supportfor</label>
+                <div class="layui-input-block">
+                    <input type="text" name="supportfor" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">pickfor</label>
+                <div class="layui-input-block">
+                    <input type="text" name="pickfor" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">supportlang</label>
+                <div class="layui-input-block">
+                    <input type="text" name="supportlang" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">passkey</label>
+                <div class="layui-input-block">
+                    <input type="text" name="passkey" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">promotion_link</label>
+                <div class="layui-input-block">
+                    <input type="text" name="promotion_link" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">uploadpos</label>
+                <div class="layui-input-block">
+                    <div name="uploadpos" id="uploadpos" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">forumpost</label>
+                <div class="layui-input-block">
+                    <div name="forumpost" id="forumpost" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">downloadpos</label>
+                <div class="layui-input-block">
+                    <div name="downloadpos" id="downloadpos" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">clientselect</label>
+                <div class="layui-input-block">
+                    <input type="number" name="clientselect" value="0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">signatures</label>
+                <div class="layui-input-block">
+                    <div name="signatures" id="signatures" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">signature</label>
+                <div class="layui-input-block">
+                    <input type="text" name="signature" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">lang</label>
+                <div class="layui-input-block">
+                    <input type="number" name="lang" value="6" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">cheat</label>
+                <div class="layui-input-block">
+                    <input type="number" name="cheat" value="0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">download</label>
+                <div class="layui-input-block">
+                    <input type="number" name="download" value="0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">upload</label>
+                <div class="layui-input-block">
+                    <input type="number" name="upload" value="0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">isp</label>
+                <div class="layui-input-block">
+                    <input type="number" name="isp" value="0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">invites</label>
+                <div class="layui-input-block">
+                    <input type="number" name="invites" value="0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">invited_by</label>
+                <div class="layui-input-block">
+                    <input type="number" name="invited_by" value="0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">gender</label>
+                <div class="layui-input-block">
+                    <div name="gender" id="gender" value="N/A"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">vip_added</label>
+                <div class="layui-input-block">
+                    <div name="vip_added" id="vip_added" value="no"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">vip_until</label>
+                <div class="layui-input-block">
+                    <input type="text" name="vip_until" id="vip_until" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">seedbonus</label>
+                <div class="layui-input-block">
+                    <input type="text" name="seedbonus" value="0.0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">charity</label>
+                <div class="layui-input-block">
+                    <input type="text" name="charity" value="0.0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">bonuscomment</label>
+                <div class="layui-input-block">
+                    <textarea name="bonuscomment" class="layui-textarea"></textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">parked</label>
+                <div class="layui-input-block">
+                    <div name="parked" id="parked" value="no"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">leechwarn</label>
+                <div class="layui-input-block">
+                    <div name="leechwarn" id="leechwarn" value="no"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">leechwarnuntil</label>
+                <div class="layui-input-block">
+                    <input type="text" name="leechwarnuntil" id="leechwarnuntil" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">lastwarned</label>
+                <div class="layui-input-block">
+                    <input type="text" name="lastwarned" id="lastwarned" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">timeswarned</label>
+                <div class="layui-input-block">
+                    <input type="number" name="timeswarned" value="0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">warnedby</label>
+                <div class="layui-input-block">
+                    <input type="number" name="warnedby" value="0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">sbnum</label>
+                <div class="layui-input-block">
+                    <input type="number" name="sbnum" value="70" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">sbrefresh</label>
+                <div class="layui-input-block">
+                    <input type="number" name="sbrefresh" value="120" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">hidehb</label>
+                <div class="layui-input-block">
+                    <div name="hidehb" id="hidehb" value="no"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">showimdb</label>
+                <div class="layui-input-block">
+                    <div name="showimdb" id="showimdb" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">showdescription</label>
+                <div class="layui-input-block">
+                    <div name="showdescription" id="showdescription" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">showcomment</label>
+                <div class="layui-input-block">
+                    <div name="showcomment" id="showcomment" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">showclienterror</label>
+                <div class="layui-input-block">
+                    <div name="showclienterror" id="showclienterror" value="no"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">showdlnotice</label>
+                <div class="layui-input-block">
+                    <input type="number" name="showdlnotice" value="1" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">tooltip</label>
+                <div class="layui-input-block">
+                    <div name="tooltip" id="tooltip" value="off"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">shownfo</label>
+                <div class="layui-input-block">
+                    <div name="shownfo" id="shownfo" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">timetype</label>
+                <div class="layui-input-block">
+                    <div name="timetype" id="timetype" value="timealive"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">appendsticky</label>
+                <div class="layui-input-block">
+                    <div name="appendsticky" id="appendsticky" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">appendnew</label>
+                <div class="layui-input-block">
+                    <div name="appendnew" id="appendnew" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">appendpromotion</label>
+                <div class="layui-input-block">
+                    <div name="appendpromotion" id="appendpromotion" value="icon"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">appendpicked</label>
+                <div class="layui-input-block">
+                    <div name="appendpicked" id="appendpicked" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">dlicon</label>
+                <div class="layui-input-block">
+                    <div name="dlicon" id="dlicon" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">bmicon</label>
+                <div class="layui-input-block">
+                    <div name="bmicon" id="bmicon" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">showsmalldescr</label>
+                <div class="layui-input-block">
+                    <div name="showsmalldescr" id="showsmalldescr" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">showcomnum</label>
+                <div class="layui-input-block">
+                    <div name="showcomnum" id="showcomnum" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">showlastcom</label>
+                <div class="layui-input-block">
+                    <div name="showlastcom" id="showlastcom" value="no"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">showlastpost</label>
+                <div class="layui-input-block">
+                    <div name="showlastpost" id="showlastpost" value="no"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">pmnum</label>
+                <div class="layui-input-block">
+                    <input type="number" name="pmnum" value="10" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">school</label>
+                <div class="layui-input-block">
+                    <input type="number" name="school" value="35" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">showfb</label>
+                <div class="layui-input-block">
+                    <div name="showfb" id="showfb" value="yes"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">page</label>
+                <div class="layui-input-block">
+                    <input type="text" name="page" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">two_step_secret</label>
+                <div class="layui-input-block">
+                    <input type="text" name="two_step_secret" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">seed_points</label>
+                <div class="layui-input-block">
+                    <input type="text" name="seed_points" value="0.0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">seed_points_per_hour</label>
+                <div class="layui-input-block">
+                    <input type="text" name="seed_points_per_hour" value="0.0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">attendance_card</label>
+                <div class="layui-input-block">
+                    <input type="number" name="attendance_card" value="0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">offer_allowed_count</label>
+                <div class="layui-input-block">
+                    <input type="number" name="offer_allowed_count" value="0" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">seed_points_updated_at</label>
+                <div class="layui-input-block">
+                    <input type="text" name="seed_points_updated_at" id="seed_points_updated_at" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">seed_time_updated_at</label>
+                <div class="layui-input-block">
+                    <input type="text" name="seed_time_updated_at" id="seed_time_updated_at" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">current_tracker</label>
+                <div class="layui-input-block">
+                    <input type="text" name="current_tracker" value="" class="layui-input">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="bottom">
+        <div class="button-container">
+            <button type="submit" class="pear-btn pear-btn-primary pear-btn-md" lay-submit=""
+                    lay-filter="save">
+                提交
+            </button>
+            <button type="reset" class="pear-btn pear-btn-md">
+                重置
+            </button>
+        </div>
+    </div>
+
+</form>
+
+<script src="/app/admin/component/layui/layui.js?v=2.8.12"></script>
+<script src="/app/admin/component/pear/pear.js"></script>
+<script src="/app/admin/component/jsoneditor/jsoneditor.js"></script>
+<script src="/app/admin/admin/js/permission.js"></script>
+
+<script>
+
+    // 相关接口
+    const INSERT_API = "/app/tracker/user/insert";
+
+    // 字段 status status
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#status").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#status",
+            name: "status",
+            filterable: true,
+            initValue: initValue,
+            value: "pending",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 added added
+    layui.use(["laydate"], function () {
+        layui.laydate.render({
+            elem: "#added",
+            type: "datetime",
+        });
+    })
+
+    // 字段 last_login last_login
+    layui.use(["laydate"], function () {
+        layui.laydate.render({
+            elem: "#last_login",
+            type: "datetime",
+        });
+    })
+
+    // 字段 last_access last_access
+    layui.use(["laydate"], function () {
+        layui.laydate.render({
+            elem: "#last_access",
+            type: "datetime",
+        });
+    })
+
+    // 字段 last_home last_home
+    layui.use(["laydate"], function () {
+        layui.laydate.render({
+            elem: "#last_home",
+            type: "datetime",
+        });
+    })
+
+    // 字段 last_offer last_offer
+    layui.use(["laydate"], function () {
+        layui.laydate.render({
+            elem: "#last_offer",
+            type: "datetime",
+        });
+    })
+
+    // 字段 forum_access forum_access
+    layui.use(["laydate"], function () {
+        layui.laydate.render({
+            elem: "#forum_access",
+            type: "datetime",
+        });
+    })
+
+    // 字段 last_staffmsg last_staffmsg
+    layui.use(["laydate"], function () {
+        layui.laydate.render({
+            elem: "#last_staffmsg",
+            type: "datetime",
+        });
+    })
+
+    // 字段 last_pm last_pm
+    layui.use(["laydate"], function () {
+        layui.laydate.render({
+            elem: "#last_pm",
+            type: "datetime",
+        });
+    })
+
+    // 字段 last_comment last_comment
+    layui.use(["laydate"], function () {
+        layui.laydate.render({
+            elem: "#last_comment",
+            type: "datetime",
+        });
+    })
+
+    // 字段 last_post last_post
+    layui.use(["laydate"], function () {
+        layui.laydate.render({
+            elem: "#last_post",
+            type: "datetime",
+        });
+    })
+
+    // 字段 privacy privacy
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#privacy").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#privacy",
+            name: "privacy",
+            filterable: true,
+            initValue: initValue,
+            value: "normal",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 fontsize fontsize
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#fontsize").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#fontsize",
+            name: "fontsize",
+            filterable: true,
+            initValue: initValue,
+            value: "medium",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 acceptpms acceptpms
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#acceptpms").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#acceptpms",
+            name: "acceptpms",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 commentpm commentpm
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#commentpm").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#commentpm",
+            name: "commentpm",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 enabled enabled
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#enabled").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#enabled",
+            name: "enabled",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 avatars avatars
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#avatars").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#avatars",
+            name: "avatars",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 donor donor
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#donor").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#donor",
+            name: "donor",
+            filterable: true,
+            initValue: initValue,
+            value: "no",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 donoruntil donoruntil
+    layui.use(["laydate"], function () {
+        layui.laydate.render({
+            elem: "#donoruntil",
+            type: "datetime",
+        });
+    })
+
+    // 字段 warned warned
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#warned").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#warned",
+            name: "warned",
+            filterable: true,
+            initValue: initValue,
+            value: "no",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 warneduntil warneduntil
+    layui.use(["laydate"], function () {
+        layui.laydate.render({
+            elem: "#warneduntil",
+            type: "datetime",
+        });
+    })
+
+    // 字段 noad noad
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#noad").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#noad",
+            name: "noad",
+            filterable: true,
+            initValue: initValue,
+            value: "no",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 noaduntil noaduntil
+    layui.use(["laydate"], function () {
+        layui.laydate.render({
+            elem: "#noaduntil",
+            type: "datetime",
+        });
+    })
+
+    // 字段 clicktopic clicktopic
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#clicktopic").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#clicktopic",
+            name: "clicktopic",
+            filterable: true,
+            initValue: initValue,
+            value: "firstpage",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 deletepms deletepms
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#deletepms").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#deletepms",
+            name: "deletepms",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 savepms savepms
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#savepms").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#savepms",
+            name: "savepms",
+            filterable: true,
+            initValue: initValue,
+            value: "no",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 showhot showhot
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#showhot").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#showhot",
+            name: "showhot",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 showclassic showclassic
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#showclassic").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#showclassic",
+            name: "showclassic",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 support support
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#support").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#support",
+            name: "support",
+            filterable: true,
+            initValue: initValue,
+            value: "no",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 picker picker
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#picker").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#picker",
+            name: "picker",
+            filterable: true,
+            initValue: initValue,
+            value: "no",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 uploadpos uploadpos
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#uploadpos").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#uploadpos",
+            name: "uploadpos",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 forumpost forumpost
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#forumpost").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#forumpost",
+            name: "forumpost",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 downloadpos downloadpos
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#downloadpos").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#downloadpos",
+            name: "downloadpos",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 signatures signatures
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#signatures").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#signatures",
+            name: "signatures",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 gender gender
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#gender").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#gender",
+            name: "gender",
+            filterable: true,
+            initValue: initValue,
+            value: "N/A",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 vip_added vip_added
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#vip_added").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#vip_added",
+            name: "vip_added",
+            filterable: true,
+            initValue: initValue,
+            value: "no",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 vip_until vip_until
+    layui.use(["laydate"], function () {
+        layui.laydate.render({
+            elem: "#vip_until",
+            type: "datetime",
+        });
+    })
+
+    // 字段 parked parked
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#parked").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#parked",
+            name: "parked",
+            filterable: true,
+            initValue: initValue,
+            value: "no",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 leechwarn leechwarn
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#leechwarn").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#leechwarn",
+            name: "leechwarn",
+            filterable: true,
+            initValue: initValue,
+            value: "no",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 leechwarnuntil leechwarnuntil
+    layui.use(["laydate"], function () {
+        layui.laydate.render({
+            elem: "#leechwarnuntil",
+            type: "datetime",
+        });
+    })
+
+    // 字段 lastwarned lastwarned
+    layui.use(["laydate"], function () {
+        layui.laydate.render({
+            elem: "#lastwarned",
+            type: "datetime",
+        });
+    })
+
+    // 字段 hidehb hidehb
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#hidehb").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#hidehb",
+            name: "hidehb",
+            filterable: true,
+            initValue: initValue,
+            value: "no",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 showimdb showimdb
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#showimdb").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#showimdb",
+            name: "showimdb",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 showdescription showdescription
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#showdescription").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#showdescription",
+            name: "showdescription",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 showcomment showcomment
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#showcomment").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#showcomment",
+            name: "showcomment",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 showclienterror showclienterror
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#showclienterror").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#showclienterror",
+            name: "showclienterror",
+            filterable: true,
+            initValue: initValue,
+            value: "no",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 tooltip tooltip
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#tooltip").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#tooltip",
+            name: "tooltip",
+            filterable: true,
+            initValue: initValue,
+            value: "off",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 shownfo shownfo
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#shownfo").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#shownfo",
+            name: "shownfo",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 timetype timetype
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#timetype").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#timetype",
+            name: "timetype",
+            filterable: true,
+            initValue: initValue,
+            value: "timealive",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 appendsticky appendsticky
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#appendsticky").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#appendsticky",
+            name: "appendsticky",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 appendnew appendnew
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#appendnew").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#appendnew",
+            name: "appendnew",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 appendpromotion appendpromotion
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#appendpromotion").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#appendpromotion",
+            name: "appendpromotion",
+            filterable: true,
+            initValue: initValue,
+            value: "icon",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 appendpicked appendpicked
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#appendpicked").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#appendpicked",
+            name: "appendpicked",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 dlicon dlicon
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#dlicon").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#dlicon",
+            name: "dlicon",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 bmicon bmicon
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#bmicon").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#bmicon",
+            name: "bmicon",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 showsmalldescr showsmalldescr
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#showsmalldescr").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#showsmalldescr",
+            name: "showsmalldescr",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 showcomnum showcomnum
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#showcomnum").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#showcomnum",
+            name: "showcomnum",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 showlastcom showlastcom
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#showlastcom").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#showlastcom",
+            name: "showlastcom",
+            filterable: true,
+            initValue: initValue,
+            value: "no",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 showlastpost showlastpost
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#showlastpost").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#showlastpost",
+            name: "showlastpost",
+            filterable: true,
+            initValue: initValue,
+            value: "no",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 showfb showfb
+    layui.use(["jquery", "xmSelect"], function () {
+        let value = layui.$("#showfb").attr("value");
+        let initValue = value ? value.split(",") : [];
+        layui.xmSelect.render({
+            el: "#showfb",
+            name: "showfb",
+            filterable: true,
+            initValue: initValue,
+            value: "yes",
+            model: {"icon": "hidden", "label": {"type": "text"}},
+            clickClose: true,
+            radio: true,
+        })
+    });
+
+    // 字段 seed_points_updated_at seed_points_updated_at
+    layui.use(["laydate"], function () {
+        layui.laydate.render({
+            elem: "#seed_points_updated_at",
+            type: "datetime",
+        });
+    })
+
+    // 字段 seed_time_updated_at seed_time_updated_at
+    layui.use(["laydate"], function () {
+        layui.laydate.render({
+            elem: "#seed_time_updated_at",
+            type: "datetime",
+        });
+    })
+
+    //提交事件
+    layui.use(["form", "popup"], function () {
+        // 字段验证允许为空
+        layui.form.verify({
+            phone: [/(^$)|^1\d{10}$/, "请输入正确的手机号"],
+            email: [/(^$)|^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/, "邮箱格式不正确"],
+            url: [/(^$)|(^#)|(^http(s*):\/\/[^\s]+\.[^\s]+)/, "链接格式不正确"],
+            number: [/(^$)|^\d+$/, '只能填写数字'],
+            date: [/(^$)|^(\d{4})[-\/](\d{1}|0\d{1}|1[0-2])([-\/](\d{1}|0\d{1}|[1-2][0-9]|3[0-1]))*$/, "日期格式不正确"],
+            identity: [/(^$)|(^\d{15}$)|(^\d{17}(x|X|\d)$)/, "请输入正确的身份证号"]
+        });
+        layui.form.on("submit(save)", function (data) {
+            layui.$.ajax({
+                url: INSERT_API,
+                type: "POST",
+                dateType: "json",
+                data: data.field,
+                success: function (res) {
+                    if (res.code) {
+                        return layui.popup.failure(res.msg);
+                    }
+                    return layui.popup.success("操作成功", function () {
+                        parent.refreshTable();
+                        parent.layer.close(parent.layer.getFrameIndex(window.name));
+                    });
+                }
+            });
+            return false;
+        });
+    });
+
+</script>
+
+</body>
+</html>

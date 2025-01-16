@@ -1,0 +1,18 @@
+{
+  "name": "ledc/push",
+  "type": "library",
+  "license": "MIT",
+  "description": "webman插件ledc/push",
+  "require": {
+    "php": ">=8.2",
+    "workerman/webman-framework": "^1.5.0",
+    "ext-json": "*",
+    "ext-curl": "*",
+    "ledc/pipeline": ">=1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Ledc\\Push\\": "src"
+    }
+  }
+}

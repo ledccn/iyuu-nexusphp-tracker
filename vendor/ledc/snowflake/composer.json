@@ -1,0 +1,31 @@
+{
+    "name": "ledc/snowflake",
+    "description": "雪花算法的PHP实现",
+    "license": "MIT",
+    "keywords": [
+        "unique id",
+        "snowflake algorithm",
+        "php snowflake",
+        "laravel snowflake",
+        "order id",
+        "unique order id",
+        "php unique id",
+        "sonyflake",
+        "php sonyflake"
+    ],
+    "homepage": "https://github.com/ledccn/snowflake",
+    "authors": [
+        {
+            "name": "david",
+            "email": "367013672@qq.com"
+        }
+    ],
+    "require": {
+        "php-64bit": ">=8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ledc\\Snowflake\\": "src"
+        }
+    }
+}
